@@ -1,1 +1,24 @@
-<p>movies works!</p>
+<div class="main">
+
+    <div class="container-flex">
+        <div class="title-container">
+            <h2>
+                Movies
+            </h2>
+            
+        </div>
+    </div>
+    <div class="main-container">
+    <div class="card" *ngFor="let movie of (movieList | async)">
+        <div class="card-img"  >
+            <img src="{{movie.posterImage}}" alt="">
+        </div>
+        <div class="info">
+            <h3>{{movie.title}}</h3>
+            <p>Genero: {{movie.genre}}</p>
+        </div>
+        <button class="card-button">More</button>
+    </div>
+</div>
+</div>
+

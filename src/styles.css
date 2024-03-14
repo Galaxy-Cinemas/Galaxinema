@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-text: #0F172A;
+    --secondary-text: #475569;
+    --primary-color: #8455FF;
+    --secondary-color: #5222D0;
+    /* --secondary-color: #0833a2; */
+    --third-color: #3e2eb2;
+    --light-primary-color: #B79FF7;
+    --bg-secondary: #351686;
+
+    --four-color: #214fc1cc;
+
+
+    
+  }
+
+body {
+    font-style:sans-serif;
+    font-size: 16px;
+    color: #333; /* Color de texto */
+    background-color: #f8f8f8; /* Color de fondo */
+    margin: 0;
+    padding: 0;
+  }
+  
