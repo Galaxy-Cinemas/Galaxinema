@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --primary-text: #0F172A;
-    --secondary-text: #475569;
+    --secondary-text: #ed9644;
+
     --primary-color: #8455FF;
     --secondary-color: #5222D0;
     /* --secondary-color: #0833a2; */
@@ -10,13 +11,11 @@
     --bg-secondary: #351686;
 
     --four-color: #214fc1cc;
-
-
-    
   }
 
 body {
-    font-style:sans-serif;
+    font-family: "Roboto", sans-serif;
+    /* font-family: "Roboto",'Courier New', Courier, monospace; */
     font-size: 16px;
     color: #333; /* Color de texto */
     background-color: #f8f8f8; /* Color de fondo */

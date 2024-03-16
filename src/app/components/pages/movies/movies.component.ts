@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Movie } from '@app/shared/interfaces/movie.interface';
-import { ActivatedRoute, Router } from '@angular/router';
+import { IMovie } from '@app/shared/interfaces/movie.interface';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MoviesService } from '@app/shared/services/movies.service';
 import { CommonModule } from '@angular/common';
@@ -9,13 +9,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-movies',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule,RouterLink],
   templateUrl: './movies.component.html',
   styleUrl: './movies.component.css'
 })
 export class MoviesComponent {
 
-items:Movie | undefined
+items:IMovie | undefined
 
 movieList?:any= [];
 
@@ -35,7 +35,6 @@ ngOnInit(): void{
       this.AllMovies();
     })
   }
-
 
   AllMovies(){
     this.movieList = this.apiservices.getAllMovie();

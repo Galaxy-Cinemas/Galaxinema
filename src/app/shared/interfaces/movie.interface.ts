@@ -1,4 +1,4 @@
-export interface Movie {
+export interface IMovie {
     MovieId?:number,
     title: string,
     description: string,

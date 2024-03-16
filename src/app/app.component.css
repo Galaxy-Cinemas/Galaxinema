@@ -1,4 +1,8 @@
 .container{
-   padding: 0 8% 0 8%;
-   
+   padding: 0 10% 0 10%;
+}
+@media (min-width: 380px) and (max-width: 1430px) {
+   .container{
+      padding: 0 8% 0 8%;
+   }
 }
