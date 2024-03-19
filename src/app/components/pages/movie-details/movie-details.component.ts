@@ -2,26 +2,27 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '@app/shared/services/movies.service';
-import { take } from 'rxjs';
+import { Observable, take } from 'rxjs';
+import { FunctionComponent } from "../shared/function/function.component";
+import { IFunction } from '@app/shared/interfaces/function.interface';
+import { IMovie } from '@app/shared/interfaces/movie.interface';
 
 @Component({
-  selector: 'app-movie-details',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.css'
+    selector: 'app-movie-details',
+    standalone: true,
+    templateUrl: './movie-details.component.html',
+    styleUrl: './movie-details.component.css',
+    imports: [CommonModule, FunctionComponent]
 })
 export class MovieDetailsComponent {
-  movie:any;
-  movieId:any;
+  movie?:IMovie;
+  movieId?:number;
 
+  functionList?:Observable<IFunction>;
 
-  constructor(private apiservices:MoviesService, 
+  constructor(private movieServices:MoviesService, 
     private ActRouter: ActivatedRoute,
-
-    ) 
-    {}
-
+    ) {}
 
   ngOnInit(){
     this.loadMovie();
@@ -33,13 +34,28 @@ export class MovieDetailsComponent {
       this.MovieById(params['id']);
     })
   }
+
  public async MovieById(movieId: number){
-    this.apiservices.getMovieById(movieId)
+    this.movieServices.getMovieById(movieId)
      .pipe(take(1))
      .subscribe(async (res: any) =>{
       this.movie = res;
-      // console.log(this.movie);
      });
   }
+
+
+  /* ----------------------------------------------------------------------  GET FUNCTION BY MOVIE ID   ------------------------------------------------------- */
+  private loadFunctionByMovieId(){
+    this.ActRouter.params.subscribe((params)=>{
+      this.movieId = params['id'];
+      this.functionByMovieId(params['id']);
+    })
+  }
+
+  public async functionByMovieId(movieId: number){
+    // this.functionList = this.apiservices.getFunctionByMovieId(movieId);
+  }
+
+
 
 }

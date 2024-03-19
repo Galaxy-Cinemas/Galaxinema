@@ -18,8 +18,9 @@ export class MoviesComponent {
 items:IMovie | undefined
 
 movieList?:any= [];
+//movieList?:Observable<IMovie>[] = [];
 
-constructor(private apiservices:MoviesService, private router: ActivatedRoute,
+constructor(private movieServices:MoviesService, private router: ActivatedRoute,
   private router2: Router ) 
 { 
 
@@ -34,9 +35,9 @@ ngOnInit(): void{
     this.router.params.subscribe( params =>{
       this.AllMovies();
     })
-  }
+  } 
 
   AllMovies(){
-    this.movieList = this.apiservices.getAllMovie();
+    this.movieList = this.movieServices.getAllMovie();
   }
 }
