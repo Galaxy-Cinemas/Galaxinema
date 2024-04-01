@@ -17,7 +17,7 @@ export class MoviesComponent {
 
 items:IMovie | undefined
 
-movieList?:any= [];
+movieList?:any = [];
 //movieList?:Observable<IMovie>[] = [];
 
 constructor(private movieServices:MoviesService, private router: ActivatedRoute,

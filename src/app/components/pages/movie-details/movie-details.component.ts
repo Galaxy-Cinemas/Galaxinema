@@ -6,6 +6,7 @@ import { Observable, take } from 'rxjs';
 import { FunctionComponent } from "../shared/function/function.component";
 import { IFunction } from '@app/shared/interfaces/function.interface';
 import { IMovie } from '@app/shared/interfaces/movie.interface';
+import { FunctionsService } from '@app/shared/services/functions.service';
 
 @Component({
     selector: 'app-movie-details',
@@ -18,15 +19,18 @@ export class MovieDetailsComponent {
   movie?:IMovie;
   movieId?:number;
 
-  functionList?:Observable<IFunction>;
+  // functionList?:Observable<IFunction>;
+
+  public functionList?:Observable<IFunction[]>;
 
   constructor(private movieServices:MoviesService, 
-    private ActRouter: ActivatedRoute,
+              private functionServices:FunctionsService, 
+              private ActRouter: ActivatedRoute,
     ) {}
 
   ngOnInit(){
     this.loadMovie();
-    // this.loadFunctionByMovieId();
+    this.loadFunctionByMovieId();
   }
   private loadMovie(){
     this.ActRouter.params.pipe(take(1)).subscribe((params)=>{
@@ -53,9 +57,9 @@ export class MovieDetailsComponent {
   }
 
   public async functionByMovieId(movieId: number){
-    // this.functionList = this.apiservices.getFunctionByMovieId(movieId);
+    this.functionList = await this.functionServices.getFunctionByMovieId(movieId);
+    console.log(this.functionList);
   }
-
 
 
 }

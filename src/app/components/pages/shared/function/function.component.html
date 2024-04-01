@@ -1,3 +1,14 @@
-<div class="function">
+<!-- <div class="function" *ngFor="let item of items;let i=index">
     <p>9:30 PM</p>
-</div>
+</div> -->
+
+    <ng-container *ngIf="items | async as itemsList">
+        <div class="main-container">
+        <div class="function"  *ngFor="let item of itemsList">
+            <p>{{item.FunctionDate}}</p>
+        </div>
+        </div>
+      </ng-container>
+
+
+  

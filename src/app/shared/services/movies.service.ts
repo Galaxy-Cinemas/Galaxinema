@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { IMovie } from '../interfaces/movie.interface';
+import { environment } from '@environment/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-urlBase = `http://localhost:5033/ApiGateway/`;
-// urlBase = `http://localhost:37061/`;
 
+urlBase = `${environment.apim}`;
 
   constructor(private http: HttpClient) { }
 
