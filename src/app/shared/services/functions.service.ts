@@ -19,7 +19,7 @@ export class FunctionsService {
     return this.sendQuery(urlBase + search);
   }
 
-  getFunctionByMovieId(movieId:number):Observable<IFunction[]>{
+  getFunctionByMovieId(movieId:number):Observable<IFunction>{
     let Endpoint = `Function/GetByMovieId/${movieId}`;
     let test = this.sendQuery(this.urlBase + Endpoint);
     return this.sendQuery(this.urlBase + Endpoint);

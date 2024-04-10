@@ -1,0 +1,21 @@
+.main-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+  }
+  
+  .function{
+    width: 80px;
+    border: 1px solid  rgb(248, 182, 38);
+    text-align: center;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 350ms ease;
+    font-size: 12px;
+    /* font-weight: 500; */
+  }
+  
+  .function:hover{
+    background-color: rgb(248, 182, 38);
+    color: white;
+  }

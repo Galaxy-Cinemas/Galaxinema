@@ -1,1 +1,18 @@
-<p>function works!</p>
+<div class="main-container">
+<div class="function" *ngFor="let item of (functionList | async)">
+    <p>{{item.functionDate | date: 'h:mm a'}}</p>
+</div>
+</div>
+
+
+
+<!-- <ng-container *ngIf="items | async as itemsList">
+    <div class="main-container">
+    <div class="function"  *ngFor="let item of itemsList">
+        <p>{{item.FunctionDate}}</p>
+    </div>
+    </div>
+</ng-container> -->
+
+
+
