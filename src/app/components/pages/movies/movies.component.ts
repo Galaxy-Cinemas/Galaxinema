@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IMovie } from '@app/shared/interfaces/movie.interface';
+import { IMovie } from '@app/core/models/movie.interface';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MoviesService } from '@app/shared/services/movies.service';

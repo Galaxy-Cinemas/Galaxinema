@@ -1,0 +1,30 @@
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+                <a [routerLink] = "['/']">
+                    <img src="assets\Logo.jpg" alt="Logo de la marca">
+                </a>
+            </div>
+            <form [formGroup]="formLogin" (ngSubmit)="Login()">
+                <div>
+                    <label>Email</label>
+                    <input type="text" placeholder="Email" formControlName="email">
+                </div>
+                <div>
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="Password" formControlName="password">
+                </div>
+                <div>
+                    <button [disabled]="!formLogin.valid" type="submit">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <div class="pie-form">
+                <a href="#">¿Perdiste tu contraseña?</a>
+                <a href="#">¿No tienes Cuenta? Registrate</a>
+            </div>
+        </div>
+    </div>
+</div>

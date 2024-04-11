@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IMovie } from '../interfaces/movie.interface';
+import { IMovie } from '../../core/models/movie.interface';
 import { environment } from '@environment/environment.development';
 
 @Injectable({

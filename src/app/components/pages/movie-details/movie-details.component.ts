@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '@app/shared/services/movies.service';
 import { Observable, take } from 'rxjs';
 import { FunctionComponent } from "../function/function.component";
-import { IFunction } from '@app/shared/interfaces/function.interface';
-import { IMovie } from '@app/shared/interfaces/movie.interface';
+import { IFunction } from '@app/core/models/function.interface';
+import { IMovie } from '@app/core/models/movie.interface';
 
 @Component({
     selector: 'app-movie-details',
