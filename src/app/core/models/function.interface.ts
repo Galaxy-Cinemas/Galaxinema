@@ -1,3 +1,7 @@
+export interface ResponseObject{
+    data:IFunction; 
+}
+
 export interface IFunction {
 
     FunctionId?:number,

@@ -6,7 +6,7 @@
         <div class="details">
             <p class="description">{{movie?.description}}</p>
             <h4>Director</h4>
-            <p >{{movie?.author}}</p>
+            <p >{{movie?.director}}</p>
             <h4>Reparto</h4>
             <p >{{movie?.cast}}</p>
             <h4>Genero</h4>
@@ -16,7 +16,7 @@
     <div class="movie-functions">
         <div class="trailer" >
             <!-- <img [src]="movie?.posterImage" alt=""> -->
-            <iframe width="660" height="400" src="https://www.youtube.com/embed/CwXOrWvPBPk?si=Pb1tuBdb-qs7YMJi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe width="660" height="400" [src]="trustedTrailerUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         <div class="functions">
             <h2>Funciones</h2>

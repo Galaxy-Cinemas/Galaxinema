@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy{
     console.log(url);
     this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
              .subscribe(res => {
-              const token = res.body?.response;
+              const token = res.body?.data;
               sessionStorage.setItem('token', token!);
               this.router.navigate(['/'])
              });

@@ -1,9 +1,14 @@
+export interface ResponseObject{
+    data:IMovie; 
+}
+
 export interface IMovie {
-    MovieId?:number,
+    filmId?:number,
     title: string,
     description: string,
-    author: string,
+    director: string,
     genre: string,
     cast: string,
-    posterImage: string
+    posterImage: string,
+    trailer:string
 }

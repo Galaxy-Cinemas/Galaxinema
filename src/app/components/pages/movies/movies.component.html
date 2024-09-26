@@ -6,7 +6,7 @@
         </div>
 
     <div class="main-container">
-    <div class="card" *ngFor="let movie of (movieList | async)" [routerLink]="['/movie-details', movie.movieId]">
+    <div class="card" *ngFor="let movie of (movieList | async)" [routerLink]="['/movie-details', movie.filmId]">
         <div class="card-img">
             <img src="{{movie.posterImage}}" alt="">
         </div>
