@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IMovie } from '../../core/models/movie.interface';
+import {  ResponseObject } from '../../core/models/movie.interface';
 import { environment } from '@environment/environment.development';
 
 @Injectable({
@@ -19,13 +19,13 @@ urlBase = `${environment.apim}`;
     return this.sendQuery(this.urlBase + EndPoint);
   }
 
-  getMovieById(id:number):Observable<IMovie>{
+  getMovieById(id:number):Observable<ResponseObject>{
     
-    let search = `Movie/GetById/${id}`;
+    let search = `Movie/GetByMovieId/${id}`;
     return this.sendQuery(this.urlBase + search);
   }
 
   sendQuery(query=''){
-    return this.http.get<any>(`${query}`).pipe(map((data:any)=>data));
+    return this.http.get<any>(`${query}`).pipe(map((data:any)=>data.data));
   }
 }

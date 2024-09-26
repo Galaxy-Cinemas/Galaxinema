@@ -6,6 +6,7 @@ import { Observable, take } from 'rxjs';
 import { FunctionComponent } from "../function/function.component";
 import { IFunction } from '@app/core/models/function.interface';
 import { IMovie } from '@app/core/models/movie.interface';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-movie-details',
@@ -17,6 +18,7 @@ import { IMovie } from '@app/core/models/movie.interface';
 export class MovieDetailsComponent {
   movie?:IMovie;
   movieId?:number;
+  trustedTrailerUrl?: SafeResourceUrl;
 
   // functionList?:Observable<IFunction>;
 
@@ -24,6 +26,7 @@ export class MovieDetailsComponent {
 
   constructor(private movieServices:MoviesService, 
               private ActRouter: ActivatedRoute,
+              private sanitizer: DomSanitizer
     ) {}
 
   ngOnInit(){
@@ -41,7 +44,15 @@ export class MovieDetailsComponent {
      .pipe(take(1))
      .subscribe(async (res: any) =>{
       this.movie = res;
+      if (this.movie && this.movie.trailer) {
+        this.trustedTrailerUrl = this.sanitizeUrl(this.movie.trailer);
+        console.log(this.trustedTrailerUrl)
+      }
      });
+  }
+
+  sanitizeUrl(url: string): SafeResourceUrl {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 

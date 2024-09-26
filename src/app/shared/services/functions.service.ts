@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment/environment.development';
 import { Observable, map } from 'rxjs';
-import { IFunction } from '../../core/models/function.interface';
+import { IFunction, ResponseObject } from '../../core/models/function.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class FunctionsService {
     return this.sendQuery(urlBase + search);
   }
 
-  getFunctionByMovieId(movieId:number):Observable<IFunction>{
+  getFunctionByMovieId(movieId:number):Observable<ResponseObject>{
     let Endpoint = `Function/GetByMovieId/${movieId}`;
     let test = this.sendQuery(this.urlBase + Endpoint);
     return this.sendQuery(this.urlBase + Endpoint);
@@ -44,6 +44,6 @@ export class FunctionsService {
 
   //-------------------------------------------------  QUERY -------------------------------------------------------------------------------------------------------
   sendQuery(query=''){
-    return this.http.get<any>(`${query}`).pipe(map((data:any)=>data));
+    return this.http.get<any>(`${query}`).pipe(map((data:any)=>data.data));
   }
 }
