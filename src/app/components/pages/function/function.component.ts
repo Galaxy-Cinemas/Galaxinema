@@ -18,6 +18,8 @@ export class FunctionComponent {
 movieId?:number;
 functionList?:any = [];
 
+dataTest?:Date;
+
 constructor(private functionServices:FunctionsService,
             private ActRouter: ActivatedRoute,
             private movieServices:MoviesService) {
@@ -26,6 +28,7 @@ constructor(private functionServices:FunctionsService,
 
 ngOnInit(): void{
   this.loadFunctionByMovieId();
+  this.dataTestFunction();
   }
 
  /* ----------------------------------------------------------------------  GET FUNCTION BY MOVIE ID   ------------------------------------------------------- */
@@ -41,5 +44,13 @@ public functionByMovieId(movieId: number){
   console.log(this.functionList);
 }
 
+dataTestFunction(){
+  this.dataTest = new Date();
+}
+
+
+ public dateTestSumDay(){
+  this.dataTest?.setDate(this.dataTest.getDate() +1)
+}
 
 }

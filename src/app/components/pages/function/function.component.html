@@ -1,8 +1,14 @@
 <div class="main-container">
-<div class="function" *ngFor="let item of (functionList | async)">
-    <p>{{item.functionDate | date: 'h:mm a'}}</p>
+    <div class="function" *ngFor="let item of (functionList | async)">
+        <p>{{item.functionDate | date: 'h:mm a'}}</p>
+    </div>
 </div>
-</div>
+
+<br><br><br><br>
+
+<div>{{dataTest | date: 'M/d/yy, h:mm a'}}</div>
+<br>
+<button (click)="dateTestSumDay()">+1 Day</button>
 
 
 

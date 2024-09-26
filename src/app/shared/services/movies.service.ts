@@ -15,7 +15,7 @@ urlBase = `${environment.apim}`;
 
   getAllMovie()
   {
-    let EndPoint = `Movie/GetAll`;
+    let EndPoint = `Movie/GetAllMovies`;
     return this.sendQuery(this.urlBase + EndPoint);
   }
 
