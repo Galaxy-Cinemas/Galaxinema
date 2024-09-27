@@ -6,25 +6,21 @@
                     <img src="assets\Logo.jpg" alt="Logo de la marca">
                 </a>
             </div>
-            <form [formGroup]="formLogin" (ngSubmit)="Login()">
+            <form [formGroup]="formRegister" (ngSubmit)="signUp()">
                 <div>
                     <label>Email</label>
                     <input type="text" placeholder="Email" formControlName="email">
                 </div>
                 <div>
-                    <label>Contraseña</label>
+                    <label>Password</label>
                     <input type="password" placeholder="Password" formControlName="password">
                 </div>
                 <div>
-                    <button [disabled]="!formLogin.valid" type="submit">
-                        Login
+                    <button [disabled]="!formRegister.valid" type="submit">
+                        Sign Up
                     </button>
                 </div>
             </form>
-            <div class="pie-form">
-                <a href="#">¿Perdiste tu contraseña?</a>
-                <a [routerLink]="['/Signup',]">¿No tienes Cuenta? Registrate</a>
-            </div>
         </div>
     </div>
 </div>

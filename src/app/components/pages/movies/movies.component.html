@@ -12,10 +12,18 @@
         </div>
         <div class="info">
             <h3>{{movie.title}}</h3>
-            <p>Genero: {{movie.genre}}</p>
+            <p>{{movie.genre}}</p>
         </div>
-        <button class="card-button">More</button>
+
+        <div [ngClass]="{'button-group': isAdmin, 'single-button-group': !isAdmin}">
+            <button *ngIf="isAdmin" class="card-button card-info">Update</button>
+            <button  class="card-button">More</button>
+            <button *ngIf="isAdmin" class="card-button card-delete">Delete</button>
+        </div>
     </div>
 </div>
 </div>
+
+
+
 

@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Login } from '@app/core/models/login.interfaces';
-import { responseAuth } from '@app/core/models/response-auth.interface';
-import { environment } from '@environment/environment.development';
+import { AuthService } from '@app/shared/services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -21,8 +19,8 @@ export class LoginComponent implements OnInit, OnDestroy{
  
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private router: Router,
+    private auth: AuthService
     ) 
     {
       this.formLogin = formBuilder.group({
@@ -40,22 +38,29 @@ export class LoginComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
   }
-  
-  Login(){
-    const usuarioLogin:  Login = {
+
+  Login() {
+    const userLogin:  Login = {
       email: this.formLogin.value.email,
       password: this.formLogin.value.password
     };
 
-
-    const url = environment.apim + 'identity/authentication';
-    console.log(url);
-    this.subRef$ =  this.http.post<responseAuth>(url, usuarioLogin, {observe: 'response'})
-             .subscribe(res => {
-              const token = res.body?.data;
-              sessionStorage.setItem('token', token!);
-              this.router.navigate(['/'])
-             });
-
+    if (this.formLogin.valid) {
+      
+      this.auth.signIn(userLogin).subscribe({
+        next: (res) => {
+          console.log(res.message);
+          this.formLogin.reset();
+          this.auth.storeToken(res.data);
+          this.router.navigate(['/'])
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
   }
 }
+
+
+
