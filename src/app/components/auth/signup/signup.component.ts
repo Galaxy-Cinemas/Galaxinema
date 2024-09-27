@@ -24,6 +24,8 @@ export class SignupComponent {
     ) 
     {
       this.formRegister = formBuilder.group({
+        firstName:['', Validators.required],
+        lastName:['', Validators.required],
         email:['', Validators.required],
         password: ['', Validators.required]
       });
@@ -31,7 +33,19 @@ export class SignupComponent {
     }
 
     signUp(){
-
+      if (this.formRegister.valid) {
+      
+        this.auth.signUp(this.formRegister.value).subscribe({
+          next: (res) => {
+            console.log(res.message);
+            this.formRegister.reset();
+            this.router.navigate(['/login'])
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      }
 
     }
 }

@@ -40,14 +40,9 @@ export class LoginComponent implements OnInit, OnDestroy{
   }
 
   Login() {
-    const userLogin:  Login = {
-      email: this.formLogin.value.email,
-      password: this.formLogin.value.password
-    };
-
     if (this.formLogin.valid) {
       
-      this.auth.signIn(userLogin).subscribe({
+      this.auth.signIn(this.formLogin.value).subscribe({
         next: (res) => {
           console.log(res.message);
           this.formLogin.reset();
