@@ -54,7 +54,4 @@ export class MovieDetailsComponent {
   sanitizeUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
-
- 
 }
