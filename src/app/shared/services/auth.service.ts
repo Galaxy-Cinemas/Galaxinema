@@ -3,12 +3,16 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt'
 import { environment } from '@environment/environment.development';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  
+  private loggedIn = new BehaviorSubject<boolean>(this.getToken() !== null);
+
+  // Observable para el estado de autenticación
+  isLoggedIn$ = this.loggedIn.asObservable();
 
   private baseUrl : string= environment.apim + 'identity';
   private userPayload:any;
@@ -17,20 +21,29 @@ export class AuthService {
    }
 
   signUp(userObj: any) {
-    return this.http.post<any>(`${this.baseUrl}/createUSer`, userObj)
+    return this.http.post<any>(`${this.baseUrl}/CreateUser`, userObj)
   }
 
   signIn(loginObj : any){
     return this.http.post<any>(`${this.baseUrl}/authentication`,loginObj)
+    
   }
 
   signOut(){
-    localStorage.clear();
+    sessionStorage.clear();
+    this.setLoggedIn(false);
     this.router.navigate(['login'])
   }
 
+  setLoggedIn(status: boolean): void {
+    this.loggedIn.next(status);
+  }
+
   storeToken(tokenValue: string){
-    sessionStorage.setItem('token', tokenValue)
+    if (tokenValue) {
+      sessionStorage.setItem('token', tokenValue)
+      this.setLoggedIn(true);
+    }
   }
 
   getToken(){

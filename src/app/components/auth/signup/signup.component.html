@@ -8,6 +8,14 @@
             </div>
             <form [formGroup]="formRegister" (ngSubmit)="signUp()">
                 <div>
+                    <label>Name</label>
+                    <input type="text" placeholder="name" formControlName="firstName">
+                </div>
+                <div>
+                    <label>LastName</label>
+                    <input type="text" placeholder="last name" formControlName="lastName">
+                </div>
+                <div>
                     <label>Email</label>
                     <input type="text" placeholder="Email" formControlName="email">
                 </div>
