@@ -9,20 +9,27 @@ import { environment } from '@environment/environment.development';
 })
 export class MoviesService {
 
-urlBase = `${environment.apim}`;
+urlBase = `${environment.localMovies}`;
+urlBaseAdmin = `${environment.localMoviesAdmin}`;
 
   constructor(private http: HttpClient) { }
 
   getAllMovie()
   {
-    let EndPoint = `Movie/GetAllMovies`;
+    let EndPoint = `GetAllMovies`;
     return this.sendQuery(this.urlBase + EndPoint);
   }
 
   getMovieById(id:number):Observable<ResponseObject>{
     
-    let search = `Movie/GetByMovieId/${id}`;
+    let search = `GetByMovieId/${id}`;
     return this.sendQuery(this.urlBase + search);
+  }
+
+  deleteMovieById(id:number):Observable<number>{
+    let Endpoint = `DeleteMovie/${id}`;
+    let query = this.urlBaseAdmin + Endpoint;
+    return this.http.delete<number>(`${query}`);
   }
 
   sendQuery(query=''){
