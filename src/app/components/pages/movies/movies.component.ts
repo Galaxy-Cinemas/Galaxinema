@@ -5,6 +5,7 @@ import { MoviesService } from '@app/shared/services/movies.service';
 import { CommonModule } from '@angular/common';
 import {  HttpClientModule } from '@angular/common/http';
 import { AuthService } from '@app/shared/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-movies',
@@ -23,7 +24,8 @@ isAdmin: boolean = false;
 
 constructor(private movieServices:MoviesService,
              private router: ActivatedRoute,
-             private auth: AuthService) 
+             private auth: AuthService,
+             private toastr: ToastrService) 
 { 
 
 }
@@ -45,5 +47,20 @@ ngOnInit(): void{
 
   checkUserRole() {
     this.isAdmin = this.auth.getRoleFromToken() === 'Admin';  
+  }
+
+  deleteMovie(filmId: number) {
+    const confirmation = window.confirm('Are you sure you want to delete this movie?');
+    if (confirmation) {
+      this.movieServices.deleteMovieById(filmId).subscribe((res) => 
+        {
+          setTimeout(() => {
+            this.loadMovieList();
+            this.toastr.success('Movie deleted successfully.', 'Deletion completed');
+          },1100);
+         
+        });;
+    }
+
   }
 }

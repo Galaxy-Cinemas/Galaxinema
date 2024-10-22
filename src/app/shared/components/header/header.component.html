@@ -16,7 +16,6 @@
     <div class="btn">
         <a *ngIf="!isLogged" [routerLink] = "['/login']"><button>Login</button></a>
         <a *ngIf="isLogged" [routerLink] = "['/login']" (click)="signOut()"><button>sign Out</button></a>
-        
     </div>
     
 </header>

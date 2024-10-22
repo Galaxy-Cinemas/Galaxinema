@@ -18,7 +18,7 @@
         <div [ngClass]="{'button-group': isAdmin, 'single-button-group': !isAdmin}">
             <button *ngIf="isAdmin" class="card-button card-info">Update</button>
             <button  class="card-button">More</button>
-            <button *ngIf="isAdmin" class="card-button card-delete">Delete</button>
+            <button *ngIf="isAdmin" class="card-button card-delete" (click)="deleteMovie(movie.filmId); $event.stopPropagation()">Delete</button>
         </div>
     </div>
 </div>
