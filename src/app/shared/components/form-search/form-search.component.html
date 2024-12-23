@@ -1,0 +1,10 @@
+<form class="form-inline">
+    <input
+        #inputSearch
+        type="search"
+        class="form-control-lg"
+        placeholder="Search movie"
+    />
+    <button type="submit" (click)="search(inputSearch.value, $event)">Search</button>
+</form>
+

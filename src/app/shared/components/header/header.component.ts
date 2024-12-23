@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@app/shared/services/auth.service';
+import { FormSearchComponent } from '../form-search/form-search.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, FormSearchComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

@@ -9,14 +9,19 @@ import { environment } from '@environment/environment.development';
 })
 export class MoviesService {
 
-urlBase = `${environment.localMovies}`;
-urlBaseAdmin = `${environment.localMoviesAdmin}`;
+urlBase = `${environment.apim}Movie/`;
 
   constructor(private http: HttpClient) { }
 
   getAllMovie()
   {
     let EndPoint = `GetAllMovies`;
+    return this.sendQuery(this.urlBase + EndPoint);
+  }
+
+  getAllMoviesByQuery(query:string)
+  {
+    let EndPoint = `GetMovieByQuery/${query}`;
     return this.sendQuery(this.urlBase + EndPoint);
   }
 
@@ -28,7 +33,7 @@ urlBaseAdmin = `${environment.localMoviesAdmin}`;
 
   deleteMovieById(id:number):Observable<number>{
     let Endpoint = `DeleteMovie/${id}`;
-    let query = this.urlBaseAdmin + Endpoint;
+    let query = this.urlBase + Endpoint;
     return this.http.delete<number>(`${query}`);
   }
 
